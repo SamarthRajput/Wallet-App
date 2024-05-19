@@ -1,4 +1,8 @@
-export function AppBar(){
+import { useNavigate } from "react-router-dom"
+import { Button } from "./Button"
+export function HomeBar(){
+
+    const navigate = useNavigate();
 
     return <div className="flex flex-row shadow h-14 justify-between"> 
         <div className="flex flex-col justify-center h-full ml-4">   
@@ -6,12 +10,9 @@ export function AppBar(){
         </div>
         <div className="flex">
             <div className="flex flex-col justify-center h-full mr-4">
-                {"User"}
-            </div>
-            <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2">
-                <div className="flex flex-col justify-center h-full text-xl">
-                    {"U"}
-                </div>
+                <Button label={"Dashboard"} onClick={() => {
+                    navigate("/dashboard");
+                }}></Button>
             </div>
         </div>
     </div>

@@ -8,8 +8,8 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 export const Signin = () => {
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState([]);
+    const [password, setPassword] = useState([]);
     const navigate = useNavigate();
 
     return <div className="bg-slate-300 h-screen flex justify-center">
@@ -25,7 +25,7 @@ export const Signin = () => {
                 }} label={"Password"} placeholder={"123456"}></InputBox>
                 <div className="pt-4">
                 <Button onClick={async () => {
-                    await axios.post("hhtp://localhost:3000/signin", {
+                    await axios.post("http://localhost:3000/api/v1/user/signin", {
                         username,
                         password
                     })

@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom"
 import axios from "axios";
 import { useState } from "react";
+import { HomeBar } from "../components/HomeBar";
 
 export const SendMoney = () => {
 
@@ -10,7 +11,9 @@ export const SendMoney = () => {
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
 
-    return <div className="flex justify-center h-screen bg-gray-100">
+    return <div>
+       <HomeBar></HomeBar>
+    <div className="flex justify-center h-screen bg-gray-100">
           <div className="h-full flex flex-col justify-center">
             <div className="border h-min text-card-foreground max-w-md p-4 space-y-8 w-96 bg-white shadow-lg rounded-lg">
                 <div className="flex flex-col space-y-1.5 p-6">
@@ -41,13 +44,21 @@ export const SendMoney = () => {
                     </div>
                     <button onClick={() => {
                         axios.post("http://localhost:3000/api/v1/account/transfer", {
-                            to: id,
-                            amount
+                            amount,
+                            to: id
                         }, {
                             headers: {
                                 //the token that was populated initially when the user signed up we are finally using it as an endpoint to send 
                                 Authorization: "Bearer " + localStorage.getItem("token")
                             }
+                        })
+                        .then(response => {
+                            if(response.status === 200){
+                                alert("Transfer Successful");
+                            }
+                        })
+                        .catch((error) => {
+                            alert("Transfer Failed/Insufficient Balance")
                         })
                     }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                         Initiate Transfer
@@ -57,4 +68,5 @@ export const SendMoney = () => {
         </div>
       </div>
     </div>
+</div>
 }
