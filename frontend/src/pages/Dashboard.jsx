@@ -7,7 +7,7 @@ import axios from "axios"
 export const Dashboard = () => {
 
    const [amount, setAmount] = useState(0);
-   const [user, setUser] = useState("");
+   const [user, setUser] = useState("User");
 
    useEffect(() => {
       axios.get("http://localhost:3000/api/v1/account/balance", {
@@ -20,17 +20,6 @@ export const Dashboard = () => {
       })
    }, [amount])
 
-   useEffect(() => {
-      // Fetch user details
-      axios.get("http://localhost:3000/api/v1/user/details", {
-          headers: {
-              Authorization: "Bearer " + localStorage.getItem("token")
-          }
-      })
-      .then(response => {
-         setUser(response.data.firstName);
-      })
-  }, []);
 
    return <div>
       <AppBar label={user}></AppBar>
