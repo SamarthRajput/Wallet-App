@@ -6,7 +6,7 @@ export function HomeBar(){
 
     return <div className="flex flex-row shadow h-14 justify-between"> 
         <div className="flex flex-col justify-center h-full ml-4">   
-            PayTM APP
+            Wallet App
         </div>
         <div className="flex">
             <div className="flex flex-col justify-center h-full mr-4">
