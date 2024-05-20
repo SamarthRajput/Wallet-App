@@ -7,6 +7,7 @@ import axios from "axios"
 export const Dashboard = () => {
 
    const [amount, setAmount] = useState(0);
+   const [user, setUser] = useState("");
 
    useEffect(() => {
       axios.get("http://localhost:3000/api/v1/account/balance", {
@@ -19,8 +20,20 @@ export const Dashboard = () => {
       })
    }, [amount])
 
+   useEffect(() => {
+      // Fetch user details
+      axios.get("http://localhost:3000/api/v1/user/details", {
+          headers: {
+              Authorization: "Bearer " + localStorage.getItem("token")
+          }
+      })
+      .then(response => {
+         setUser(response.data.firstName);
+      })
+  }, []);
+
    return <div>
-      <AppBar></AppBar>
+      <AppBar label={user}></AppBar>
       <div className="m-8">
          {/* toFixed() function javaScript is used formats a number using fixed-point notation */}
          <Balance value={amount.toFixed(2)} />

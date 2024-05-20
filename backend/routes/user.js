@@ -81,15 +81,12 @@ router.post("/signin", async function(req, res){
     });
     
     if(dbUser){
-
         const token = jwt.sign({
             userId: dbUser._id
         }, JWT_SECRET)
-
         res.json({
             token: token
         })
-
     return;
     }
 
@@ -158,5 +155,19 @@ router.get("/bulk", async (req, res) => {
         }))
     })
 });
+
+router.get("/details", authMiddleware, async (req, res) => {
+        const user = await User.findById(req.userId).select('username firstName lastName');
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.json({
+            username: user.username,
+            firstName: user.firstName,
+            lastName: user.lastName
+        });
+});
+
+
 
 module.exports = router;

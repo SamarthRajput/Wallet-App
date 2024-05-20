@@ -43,7 +43,10 @@ export const Signup = () => {
                             lastName,
                             username,
                             password
-                        });
+                        })
+                        .catch((error) => {
+                            alert("Email already taken / Incorrect inputs")
+                        })
                         // response.data.token where do we store this so that all your future requests contains this token
                         //we store the token in the localStorage
                         //localStorage.setItem() needs 2 arguments , 1st is the key and second is the argument 

@@ -25,11 +25,19 @@ export const Signin = () => {
                 }} label={"Password"} placeholder={"123456"}></InputBox>
                 <div className="pt-4">
                 <Button onClick={async () => {
-                    await axios.post("http://localhost:3000/api/v1/user/signin", {
+                    try{await axios.post("http://localhost:3000/api/v1/user/signin", {
                         username,
                         password
+                    }, {
+                        headers: {
+                            Authorization: "Bearer " + localStorage.getItem("token")
+                        }
                     })
                     navigate("/dashboard")
+                }
+                catch(error){
+                    alert("Incorrect Username/Password")
+                }
                 }} label={"Sign in"}></Button>
                 </div>
                 <BottomWarning label={"Already have an account ?"} buttonText={"Sign Up"} to={"/signup"}></BottomWarning>
