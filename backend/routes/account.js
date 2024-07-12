@@ -17,7 +17,7 @@ router.get("/balance", authMiddleware, async (req, res) => {
 
 //we have to worry about 2 things
 //1. the request doesnot partially succed 
-//2. if there is an if check it sort of needs to run first for the first transaction and then for the second transaction, that is if someone sends 2 concurrent request tab bhi then cannot foolus  
+//2. if there is an if check it sort of needs to run first for the first transaction and then for the second transaction, that is if someone sends 2 concurrent request tab bhi they cannot fool us  
 
 //Doing transaction in MongoDB
 router.post("/transfer", authMiddleware, async (req, res) => {
