@@ -43,7 +43,7 @@ export const SendMoney = () => {
                     />
                     </div>
                     <button onClick={() => {
-                        axios.post("https://paytm-app-bl3i.onrender.com/api/v1/account/transfer", {
+                        axios.post("http://localhost:3000/api/v1/account/transfer", {
                             amount,
                             to: id
                         }, {

@@ -37,7 +37,7 @@ export const Signup = () => {
                     <div className="pt-4">
                         {/* Now anytime this button is clicked, we want to send the backend requests which we can do via axios or via fetch */}
                     <Button label={"Sign up"} onClick={async () => {
-                        const response = await axios.post("https://paytm-app-bl3i.onrender.com/api/v1/user/signup", {
+                        const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
                             //this is a key value pair but we have not done firstName : firstName bcz in javascript if we know the name of the key and the value is the same we can actually put them together 
                             firstName,
                             lastName,
