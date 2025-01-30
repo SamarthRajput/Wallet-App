@@ -10,7 +10,7 @@ export const Dashboard = () => {
    const [user, setUser] = useState("User");
 
    useEffect(() => {
-      axios.get("http://localhost:3000/api/v1/account/balance", {
+      axios.get("https://paytm-app-bl3i.onrender.com/api/v1/account/balance", {
          headers: {
             Authorization : "Bearer " + localStorage.getItem("token") 
          }
