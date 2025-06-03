@@ -6,6 +6,7 @@ import { Button } from "../components/Button"
 import { useState } from "react"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
+import { NavBar } from "../components/NavBar"
 
 export const Signup = () => {
 
@@ -16,7 +17,12 @@ export const Signup = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    return <div className="bg-slate-300 h-screen flex justify-center">
+    return <div className="h-screen overflow-hidden">
+        <div>
+            <NavBar />
+        </div>
+
+    <div className="bg-slate-300 h-full flex justify-center">
             <div className="flex flex-col justify-center">
                 <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
                     <Heading label={"Sign Up"}></Heading>
@@ -66,4 +72,6 @@ export const Signup = () => {
                 </div>
             </div>
         </div>
+    </div>
+    
 }
